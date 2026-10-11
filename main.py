@@ -9,7 +9,8 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+        elif event.type == pygame.MOUSEMOTION:
+            print("Mouse:", event.pos)    
     screen.fill((25, 25, 25))
     pygame.display.flip()
     clock.tick(60)
