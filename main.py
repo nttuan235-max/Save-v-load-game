@@ -33,20 +33,20 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_down = True
             x,y = event.pos
-            rects.append((x, y, 10, 10))
+            rects.append((x, y, RECT_SIZE, RECT_SIZE))
             print(rects)
         elif event.type == pygame.MOUSEBUTTONUP:
             mouse_down = False
         elif event.type == pygame.MOUSEMOTION:
-            if mouse_down:
-                print("Mouse:", event.pos)
+            print("Mouse:", event.pos)
 
-    screen.fill((100, 0, 0) if mouse_down else (25, 25, 25))
+    screen.fill(BG_PRESSED if mouse_down else BG_IDLE)
     for rect in rects:
-        pygame.draw.rect(screen, (255, 255, 255), rect)
+        pygame.draw.rect(screen, RECT_COLOR, rect)
     pygame.display.flip()
     clock.tick(60)
 
-
+with open(SAVE_FILE, "w", encoding="utf-8") as f:
+    json.dump(rects, f)
 
 pygame.quit()
