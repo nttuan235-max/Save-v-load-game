@@ -1,3 +1,5 @@
+import os
+import json
 import pygame
 
 pygame.init()
@@ -29,5 +31,9 @@ while running:
         pygame.draw.rect(screen, (255, 255, 255), rect)
     pygame.display.flip()
     clock.tick(60)
+    
+with open("save.json", "w", encoding="utf-8") as f:
+    json.dump(rects, f)
 
+pygame.quit()
 pygame.quit()
